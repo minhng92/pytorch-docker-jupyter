@@ -1,0 +1,27 @@
+version: '2.3'
+services:
+  py35_gpu:
+    image: py35_gpu
+    ports:
+      - "10010:8888"
+    volumes:
+      - ./workspace:/workspace
+      - ./home:/home
+    ipc: host
+    runtime: nvidia
+    restart: always     # or "unless-stopped"
+
+    environment:
+      PYTHONIOENCODING: utf-8
+      #NVIDIA_VISIBLE_DEVICES: 0
+
+    # jupyter notebook with no password
+    #command: jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=
+    
+    # pass: minh@2018 | https | home folder contains "mycert.pem" and "mykey.key" files
+    #command: jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.password=sha1:d10e6525ba95:2f4cf9423b0172bf14dee5be9da3c5a349bd5ab3 --NotebookApp.terminado_settings='{"shell_command":["/bin/bash"]}' --NotebookApp.certfile='/home/mycert.pem' --NotebookApp.keyfile='/home/mykey.key'
+    
+    # jupyter lab workspace with no password
+    command: jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=
+volumes:
+  py35_gpu:
