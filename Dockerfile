@@ -32,7 +32,7 @@ ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
 RUN conda install --name pytorch-py$PYTHON_VERSION ffmpeg matplotlib opencv && /opt/conda/bin/conda clean -ya
 RUN conda install --name pytorch-py$PYTHON_VERSION lxml -c anaconda
 
-RUN /opt/conda/envs/pytorch-py$PYTHON_VERSION/bin/pip install easydict ffmpy imutils
+RUN /opt/conda/envs/pytorch-py$PYTHON_VERSION/bin/pip install easydict ffmpy imutils requests flask
 
 RUN conda install --name pytorch-py$PYTHON_VERSION --yes ipython notebook jupyter jupyterlab && conda clean -ya
 
