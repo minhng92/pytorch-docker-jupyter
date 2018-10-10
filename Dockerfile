@@ -11,7 +11,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
          libglu1 \
          ssh \
          nano \
-         htop
+         htop \
+         unzip
 
 ENV PYTHON_VERSION=3.5
 RUN curl -o ~/miniconda.sh -O  https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh  && \
@@ -32,7 +33,7 @@ ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
 RUN conda install --name pytorch-py$PYTHON_VERSION ffmpeg matplotlib opencv && /opt/conda/bin/conda clean -ya
 RUN conda install --name pytorch-py$PYTHON_VERSION lxml -c anaconda
 
-RUN /opt/conda/envs/pytorch-py$PYTHON_VERSION/bin/pip install easydict ffmpy imutils requests flask
+RUN /opt/conda/envs/pytorch-py$PYTHON_VERSION/bin/pip install easydict ffmpy imutils requests flask onnx
 
 RUN conda install --name pytorch-py$PYTHON_VERSION --yes ipython notebook jupyter jupyterlab && conda clean -ya
 
