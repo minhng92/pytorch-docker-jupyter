@@ -4,8 +4,6 @@ Quickly set up Pytorch and Jupyter Lab with Docker
 
 # Usage
 
-## Pytorch GPU version
-
 ```
 $ git clone https://github.com/minhng92/pytorch-docker-jupyter
 $ cd pytorch-docker-jupyter/pytorch_gpu
@@ -18,17 +16,16 @@ $ docker-compose up -d
 
 Enjoy your workspace @ `localhost:10010`
 
-## Pytorch CPU version
+---
+
+# Verify Pytorch environment
 
 ```
-$ git clone https://github.com/minhng92/pytorch-docker-jupyter
-$ cd pytorch-docker-jupyter/pytorch_cpu
-
-# modify PYTORCH_VERSION environment in Dockerfile if needed!!
-
-$ docker-compose build
-$ docker-compose up -d
+$ python
+Python 3.5.5 |Anaconda, Inc.| (default, May 13 2018, 21:12:35)
+[GCC 7.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import torch
+>>> torch.__version__
+'0.4.0'
 ```
-
-Enjoy your workspace @ `localhost:10011`
-
